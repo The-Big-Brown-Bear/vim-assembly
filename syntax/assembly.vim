@@ -1,3 +1,4 @@
+" Assembly Syntax file for IBM S360/370/390
 if version < 600
     syntax clear
 elseif exists("b:current_syntax")
@@ -153,7 +154,7 @@ if b:file_extensions ==# 'asm'
     syntax keyword assemblyMnemonic ABS ADD ADDHN ADDHN2 ADDP ADDV AESD AESE AESIMC
     syntax keyword assemblyMnemonic AESMC AND
 
-    syntax keyword assemblyMnemonic BIC BIF BIT BSL
+    syntax keyword assemblyMnemonic BIC BIF BIT BSL BAL
 
     syntax keyword assemblyMnemonic CLS CLZ CMEQ CMGE CMGT CMHI CMHS CMLE CMLT CMTST
     syntax keyword assemblyMnemonic CNT
@@ -257,6 +258,7 @@ if b:file_extensions ==# 'asm'
     syntax keyword assemblyRegister s20 s21 s22 s23 s24 s25 s26 s27 s28 s29 s30
     syntax keyword assemblyRegister s31
 
+
     syntax keyword assemblyRegister wzr xzr
 
     syntax keyword assemblyRegister sp pc pstate
@@ -267,6 +269,13 @@ if b:file_extensions ==# 'asm'
     syntax match assemblyType /[@%]common/
     syntax match assemblyType /[@%]notype/
     syntax match assemblyType /[@%]gnu_unique_object/
+
+elseif b:file_extensions ==# 'S'
+    syntax keyword assemblyRegister  R0  R1  R2  R3  R4  R5  R6  R7  R8  R9 R10
+    syntax keyword assemblyRegister R10 R11 R12 R13 R14 R15 R16 R17 R18 R19 R20
+    syntax keyword assemblyMnemonic BAL BH JH
+    syntax region assemblyComment start="*" end="$" contains=todo
+
 elseif b:file_extensions ==# 'agc'
     syntax keyword assemblySpecial NOTE TODO XXX contained
     syntax region assemblyComment start="#" end="$" keepend contains=assemblySpecial
