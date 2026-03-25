@@ -7,7 +7,55 @@ endif
 
 let b:file_extensions = expand('%:e')
 
-if b:file_extensions ==# 'asm'
+if b:file_extensions ==# 'S'
+    syntax keyword assemblyRegister  R0  R1  R2  R3  R4  R5  R6  R7  R8  R9 R10
+    syntax keyword assemblyRegister R10 R11 R12 R13 R14 R15 R16 R17 R18 R19 R20
+
+    syntax keyword assemblyMnemonic A AD ADR AE AER AH AL ALR AP AR AU AUR AW AWR AXR
+    syntax keyword assemblyMnemonic BAL BALR BAS BASR BC BCR BCT BCTR BXH BXLE
+    syntax keyword assemblyMnemonic C CD CDR CDS CE CER CH CL CLC CLCL CLI CLM
+    syntax keyword assemblyMnemonic CLR CLRCH CLRIO CINCS CP CR CS CVB CVD COPY
+    syntax keyword assemblyMnemonic D DD DDR DE DER DISCS DP DR DS DC 
+    syntax keyword assemblyMnemonic ED EDMK EPAR ESAR EX END EQU
+    syntax keyword assemblyMnemonic HDR HDV HER HIO
+    syntax keyword assemblyMnemonic IAC IC ICM IPK IPTE ISK ISKE IVSK
+    syntax keyword assemblyMnemonic L LA LASP LCDR LCER LCR LCTL LD LDR LE LER
+    syntax keyword assemblyMnemonic LH LM LNDR LNER LNR LPDR LPER LPR LPSW
+    syntax keyword assemblyMnemonic LR LRA LRDRLRER LTDR LTER LTR
+    syntax keyword assemblyMnemonic M MC MD MDR ME MER MH MP MR
+    syntax keyword assemblyMnemonic MVC MVCIN MVCK MVCL MVCP MVCS MVI MVN MVO MVZ MXD MXDR MXR
+    syntax keyword assemblyMnemonic N NC NI NR
+    syntax keyword assemblyMnemonic O OC OI OR ORG
+    syntax keyword assemblyMnemonic PACK PC PT PTLB
+    syntax keyword assemblyMnemonic RDD RIO RRB RRBE
+    syntax keyword assemblyMnemonic S SAC SCK SCKC SD SDR SE SER SH SIGHP SIO SIOF 
+    syntax keyword assemblyMnemonic SL SLA SLDA SLDL SLL SLR
+    syntax keyword assemblyMnemonic SP SPKA SPM SPT SPX SR SRA SRDA SRDL SRL SRP
+    syntax keyword assemblyMnemonic SSAR SSK SSKE SSM ST STAP STC STCK STCKC STCM STCTL
+    syntax keyword assemblyMnemonic STD STE STH STIDC STIDP STM STNSM STOSM STPT STPX
+    syntax keyword assemblyMnemonic SU SUR SVC SW SWR SXR
+    syntax keyword assemblyMnemonic TB TCH TIO TM TPROT TR TRT TS TITLE TPEND
+    syntax keyword assemblyMnemonic UNPK USING
+    syntax keyword assemblyMnemonic VA VACD VACDR VACE VACE VACER VACRS VACSV VAD VADQ VADR VADS VAE VAEQ VAER VAES
+    syntax keyword assemblyMnemonic VAE VAEQ VAER VAES VAQ VAR VAS
+    syntax keyword assemblyMnemonic VC VCD VCDQ VCDR VCDS VCE VCEQ VCER VCES VCOCM VCQ VCR VCS VCVM VCZVM
+    syntax keyword assemblyMnemonic VDD VDDQ VDDR VDDS VDE VDEQ VDER VDES
+    syntax keyword assemblyMnemonic VL VLBIX VLCDR VLCER VLCR VLCR VLCVM VLD VLDQ VLDR
+    syntax keyword assemblyMnemonic VLE VLEL VLELD VLELE VLEQ VLER VLH VLI VLID VLIE VLINT VLM VLMD VLMDQ VLMDR VLME VLMEQ VLMER VLMQ VLMER VLMQ VLMR VLNDR VLNER VLNR VLPDR VLPER VLPR VLQ VLR VLVCA VLVCU VLVM VLY VLYD VLYE VLZDR VLZER VLZR
+    syntax keyword assemblyMnemonic VM VMAD VMADQ VMADS VMAE VMAEQ VMAES VMCD
+    syntax keyword assemblyMnemonic VMAES VMCD VMCE VMCER VMD VMDQ VMDR VMDS VME VMEQ VMER VMES VMNSD VMNSE VMQ VMR VMRRS VMRSV VMS VMSD VMSDQ VMSDS VMSE VMSEQ VMSES VMXAD VMXAE VMXSD VMXSE
+    syntax keyword assemblyMnemonic VN VNQ VNR VNS VNVM
+    syntax keyword assemblyMnemonic VO VOQ VOR VOS VOVM
+    syntax keyword assemblyMnemonic VRCL VRRS VRSV VRSVC VS VSD VSDQ VSDR VSDS VSE VSEQ VSER VSES VSLL VSPSD VSQ VSR VSRL VSRRS VSRSV VSS VST VSTD VSTE VSTH VSTI VSTID VSTIE VSTK VSTKD VSTKE VSTM VSTMD VSTME VSTSVM VSTVP VSVMM VTVM
+    syntax keyword assemblyMnemonic VX VXEL VXELD VXELE VXQ VXR VXS VXVC VXVM VXVMM VZPSD
+    syntax keyword assemblyMnemonic WRD
+    syntax keyword assemblyMnemonic X XC XI XR
+    syntax keyword assemblyMnemonic ZAP
+    syntax keyword assemblyMnemonic --
+
+    syntax region assemblyComment start="*" end="$" contains=todo
+
+elseif b:file_extensions ==# 'asm'
     " NOTE(compnerd) '.' is not in the default keyword, and will cause the
     " directives to not be recognised by default.  Also add '!' to ensure that the
     " increment operator is matched.
@@ -270,11 +318,6 @@ if b:file_extensions ==# 'asm'
     syntax match assemblyType /[@%]notype/
     syntax match assemblyType /[@%]gnu_unique_object/
 
-elseif b:file_extensions ==# 'S'
-    syntax keyword assemblyRegister  R0  R1  R2  R3  R4  R5  R6  R7  R8  R9 R10
-    syntax keyword assemblyRegister R10 R11 R12 R13 R14 R15 R16 R17 R18 R19 R20
-    syntax keyword assemblyMnemonic BAL BH JH
-    syntax region assemblyComment start="*" end="$" contains=todo
 
 elseif b:file_extensions ==# 'agc'
     syntax keyword assemblySpecial NOTE TODO XXX contained
