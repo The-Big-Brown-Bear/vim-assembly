@@ -2,13 +2,12 @@
 
 ## Summary
 
-> Vim syntax highlighter for assembly languages.
+> Vim syntax highlighter for Legacy IBM assembly languages.
 
 This plugin supports the following file extensions:
 
-- `.agc`: Apollo Guidance Computer
 - `.S`: IBM S360/S370/Z390 Assembly
-- `.X68`: Motorola 68K Assembly
+- `.F`: IBM S360/S370/Z390 Assembly
 
 ## How to install:
 
